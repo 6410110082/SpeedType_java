@@ -38,6 +38,10 @@ body{
 .content-box .typing-text{
   overflow: hidden;
   max-height: 256px;
+
+}
+.text-magin{
+  line-height: 2;
 }
 .typing-text::-webkit-scrollbar{
   width: 0;
@@ -47,6 +51,7 @@ body{
   text-align: justify;
   letter-spacing: 1px;
   word-break: break-all;
+ 
 }
 .typing-text p span{
   position: relative;
