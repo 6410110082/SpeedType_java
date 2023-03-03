@@ -12,11 +12,11 @@ body{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #17A2B8;
+  background: linear-gradient(0deg,#5283cc, #75adf2, #ecd5aa);
 }
 ::selection{
   color: #fff;
-  background: #17A2B8;
+  background: #b07453;
 }
 .wrapper{
   width: 770px;
@@ -61,7 +61,7 @@ body{
   border-radius: 4px;
 }
 .typing-text p span.active{
-  color: #17A2B8;
+  color: #b07453;
 }
 .typing-text p span.active::before{
   position: absolute;
@@ -72,7 +72,7 @@ body{
   left: 0;
   opacity: 0;
   border-radius: 5px;
-  background: #17A2B8;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
   animation: blink 1s ease-in-out infinite;
 }
 @keyframes blink{
@@ -90,20 +90,26 @@ body{
   border-top: 1px solid #bfbfbf;
 }
 .content button{
-  outline: none;
-  border: none;
-  width: 105px;
-  color: #fff;
-  padding: 8px 0;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  background: #17A2B8;
-  transition: transform 0.3s ease;
+  height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 .content button:active{
   transform: scale(0.97);
 }
+.button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+
 .content .result-details{
   display: flex;
   flex-wrap: wrap;
@@ -181,4 +187,27 @@ li:not(:first-child) span{
   .content button{
     margin-top: 10px;
   }
+}
+
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
 }
