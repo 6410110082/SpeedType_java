@@ -1,4 +1,4 @@
-/* Import Google Font - Poppins */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,700&family=Sarabun:ital,wght@0,400;0,600;0,700;1,500;1,800&display=swap');
 *{
   margin: 0;
@@ -41,7 +41,7 @@ body{
 
 }
 .text-magin{
-  line-height: 2;
+  line-height: 1.7;
 }
 .typing-text::-webkit-scrollbar{
   width: 0;
@@ -236,3 +236,4 @@ li:not(:first-child) span{
   background: #d17575;
 }
 .btns:hover button{opacity: 0.6}
+
