@@ -91,7 +91,7 @@ body{
   padding: 12px 0;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   border-top: 1px solid #bfbfbf;
 }
 .content button{
@@ -123,6 +123,7 @@ body{
   align-items: center;
   width: calc(100% - 140px);
   justify-content: space-between;
+  text-align: center;
 }
 .result-details li{
   display: flex;
@@ -208,13 +209,11 @@ li:not(:first-child) span{
     blink-caret .75s step-end infinite;
 }
 
-/* The typing effect */
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
 }
 
-/* The typewriter cursor effect */
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: rgb(0, 0, 0); }
@@ -236,4 +235,24 @@ li:not(:first-child) span{
   background: #d17575;
 }
 .btns:hover button{opacity: 0.6}
+
+.btns{
+  margin-top: 20px;
+}
+.btn button{
+  height: 40px;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #000000;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: rgba(148,187,233,1);
+   text-shadow: 2px 2px #989898;
+  margin-top: 20px;
+}
+.btn:hover button{opacity: 0.6}
 
