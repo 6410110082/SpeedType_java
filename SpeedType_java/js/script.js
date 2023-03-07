@@ -13,7 +13,7 @@ cpmTagPopup = document.querySelector('#popup-modal .cpm span');
 
 
 let timer,
-maxTime = 10,
+maxTime = 1,
 timeLeft = maxTime,
 charIndex = mistakes = isTyping = 0;
 
