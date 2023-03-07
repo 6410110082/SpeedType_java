@@ -1,6 +1,7 @@
 const typingText = document.querySelector(".typing-text p"),
 inpField = document.querySelector(".wrapper .input-field"),
 tryAgainBtn = document.querySelector(".content button"),
+
 timeTag = document.querySelector(".time span b"),
 mistakeTag = document.querySelector(".mistake span"),
 wpmTag = document.querySelector(".wpm span"),
@@ -65,6 +66,13 @@ function initTyping() {
         inpField.value = "";
     }   
 }
+const popupModal = document.getElementById("popup-modal");
+function showPopupModal() {
+    popupModal.style.display = "block";
+    tryAgainBtn.addEventListener("click", resetGame);
+
+}
+
 
 function initTimer() {
     if(timeLeft > 0) {
@@ -77,6 +85,7 @@ function initTimer() {
         timerBar.style.width = `${progress}%`;
     } else {
         clearInterval(timer);
+        showPopupModal();
     }
 }
 
@@ -92,6 +101,8 @@ function resetGame() {
     wpmTag.innerText = 0;
     mistakeTag.innerText = 0;
     cpmTag.innerText = 0;
+    popupModal.style.display = "none"; // Hide the popup modal
+
 }
 
 loadParagraph();
