@@ -1,15 +1,25 @@
 const typingText = document.querySelector(".typing-text p"),
 inpField = document.querySelector(".wrapper .input-field"),
 tryAgainBtn = document.querySelector(".content button"),
+
 timeTag = document.querySelector(".time span b"),
 mistakeTag = document.querySelector(".mistake span"),
 wpmTag = document.querySelector(".wpm span"),
 cpmTag = document.querySelector(".cpm span");
+// Update the result values in the popup modal
+mistakePopup = document.querySelector('#popup-modal .mistake span');
+wpmTagPopup = document.querySelector('#popup-modal .wpm span');
+cpmTagPopup = document.querySelector('#popup-modal .cpm span');
+accuracyTagPopup = document.querySelector('#popup-modal .acc span');
+
 
 let timer,
-maxTime = 60,
+maxTime = 1,
 timeLeft = maxTime,
 charIndex = mistakes = isTyping = 0;
+
+
+const timerBar = document.querySelector(".timer-bar-progress");
 
 function loadParagraph() {
     const ranIndex = Math.floor(Math.random() * thai_paragraphs.length);
@@ -24,6 +34,7 @@ function loadParagraph() {
 }
 
 function initTyping() {
+    let correctChars = charIndex - mistakes;
     let characters = typingText.querySelectorAll("span");
     let typedChar = inpField.value.split("")[charIndex];
     if(charIndex < characters.length - 1 && timeLeft > 0) {
@@ -57,11 +68,32 @@ function initTyping() {
         wpmTag.innerText = wpm;
         mistakeTag.innerText = mistakes;
         cpmTag.innerText = charIndex - mistakes;
+        
     } else {
         clearInterval(timer);
-        inpField.value = "";
+        if (timeLeft == 0) {
+            setTimeout(showPopupModal, 1000); 
+        } else {
+            inpField.value = "";
+            showPopupModal();
+        }
     }   
 }
+const popupModal = document.getElementById("popup-modal");
+const tryAgainPopupBtn = document.querySelector(".try-again-btn");
+
+function showPopupModal() {
+    let correctChars = charIndex - mistakeTag.innerText;;
+    let accuracy = Math.round((correctChars / charIndex) * 100);
+    popupModal.style.display = "block";
+    tryAgainPopupBtn.addEventListener("click", resetGame);
+    wpmTagPopup.innerText = wpmTag.innerText;
+    mistakePopup.innerText = mistakeTag.innerText;
+    cpmTagPopup.innerText = charIndex - mistakes;
+    accuracyTagPopup.innerText = accuracy;
+
+}
+
 
 function initTimer() {
     if(timeLeft > 0) {
@@ -69,12 +101,20 @@ function initTimer() {
         timeTag.innerText = timeLeft;
         let wpm = Math.round(((charIndex - mistakes)  / 5) / (maxTime - timeLeft) * 60);
         wpmTag.innerText = wpm;
-    } else {
+        
+        const progress = (timeLeft / maxTime) * 100;
+        timerBar.style.width = `${progress}%`;
+    } 
+    else {
         clearInterval(timer);
+        showPopupModal();
+        
     }
 }
 
 function resetGame() {
+    timerBar.style.width = "100%";
+
     loadParagraph();
     clearInterval(timer);
     timeLeft = maxTime;
@@ -84,19 +124,11 @@ function resetGame() {
     wpmTag.innerText = 0;
     mistakeTag.innerText = 0;
     cpmTag.innerText = 0;
+    popupModal.style.display = "none"; // Hide the popup modal
+
 }
 
 loadParagraph();
 inpField.addEventListener("input", initTyping);
 tryAgainBtn.addEventListener("click", resetGame);
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Get the button element
-    var getStartedBtn = document.getElementById("get-started-btn");
-    
-    // Add a click event listener to the button
-    getStartedBtn.addEventListener("click", function() {
-      // Redirect to the other JavaScript file
-      window.location.href = "js/thai-script.js";
-    });
-  });
