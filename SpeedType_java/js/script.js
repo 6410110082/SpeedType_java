@@ -69,7 +69,7 @@ function initTyping() {
     } else {
         clearInterval(timer);
         if (timeLeft == 0) {
-            showPopupModal();
+            setTimeout(showPopupModal, 1000); 
         } else {
             inpField.value = "";
             showPopupModal();
