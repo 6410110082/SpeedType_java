@@ -37,11 +37,11 @@ body{
 }
 .content-box .typing-text{
   overflow: hidden;
-  max-height: 256px;
+  max-height: fit-content;
 
 }
 .text-magin{
-  line-height: 1.7;
+  line-height: 2;
 }
 .typing-text::-webkit-scrollbar{
   width: 0;
