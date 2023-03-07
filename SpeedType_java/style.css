@@ -256,3 +256,16 @@ li:not(:first-child) span{
 }
 .btn:hover button{opacity: 0.6}
 
+.timer-bar {
+  height: 10px;
+  background-color: #ddd;
+}
+
+.timer-bar-progress {
+  height: 100%;
+  background-color: #4CAF50;
+  width: 100%;
+  transition: width 1s linear;
+}
+
+

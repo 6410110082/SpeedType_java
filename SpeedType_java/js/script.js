@@ -11,6 +11,9 @@ maxTime = 60,
 timeLeft = maxTime,
 charIndex = mistakes = isTyping = 0;
 
+
+const timerBar = document.querySelector(".timer-bar-progress");
+
 function loadParagraph() {
     const ranIndex = Math.floor(Math.random() * paragraphs.length);
     typingText.innerHTML = "";
@@ -69,12 +72,17 @@ function initTimer() {
         timeTag.innerText = timeLeft;
         let wpm = Math.round(((charIndex - mistakes)  / 5) / (maxTime - timeLeft) * 60);
         wpmTag.innerText = wpm;
+        
+        const progress = (timeLeft / maxTime) * 100;
+        timerBar.style.width = `${progress}%`;
     } else {
         clearInterval(timer);
     }
 }
 
 function resetGame() {
+    timerBar.style.width = "100%";
+
     loadParagraph();
     clearInterval(timer);
     timeLeft = maxTime;
@@ -89,3 +97,4 @@ function resetGame() {
 loadParagraph();
 inpField.addEventListener("input", initTyping);
 tryAgainBtn.addEventListener("click", resetGame);
+
