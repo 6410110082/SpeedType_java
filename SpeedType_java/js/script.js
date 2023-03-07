@@ -6,6 +6,11 @@ timeTag = document.querySelector(".time span b"),
 mistakeTag = document.querySelector(".mistake span"),
 wpmTag = document.querySelector(".wpm span"),
 cpmTag = document.querySelector(".cpm span");
+// Update the result values in the popup modal
+mistakePopup = document.querySelector('#popup-modal .mistake span');
+wpmTagPopup = document.querySelector('#popup-modal .wpm span');
+cpmTagPopup = document.querySelector('#popup-modal .cpm span');
+
 
 let timer,
 maxTime = 10,
@@ -77,7 +82,9 @@ const tryAgainPopupBtn = document.querySelector(".try-again-btn");
 function showPopupModal() {
     popupModal.style.display = "block";
     tryAgainPopupBtn.addEventListener("click", resetGame);
-
+    wpmTagPopup.innerText = wpmTag.innerText;
+    mistakePopup.innerText = mistakeTag.innerText;
+    cpmTagPopup.innerText = charIndex - mistakes;
 }
 
 
