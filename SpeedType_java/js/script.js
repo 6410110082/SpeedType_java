@@ -10,6 +10,7 @@ cpmTag = document.querySelector(".cpm span");
 mistakePopup = document.querySelector('#popup-modal .mistake span');
 wpmTagPopup = document.querySelector('#popup-modal .wpm span');
 cpmTagPopup = document.querySelector('#popup-modal .cpm span');
+accuracyTagPopup = document.querySelector('#popup-modal .acc span');
 
 
 let timer,
@@ -33,6 +34,7 @@ function loadParagraph() {
 }
 
 function initTyping() {
+    let correctChars = charIndex - mistakes;
     let characters = typingText.querySelectorAll("span");
     let typedChar = inpField.value.split("")[charIndex];
     if(charIndex < characters.length - 1 && timeLeft > 0) {
@@ -66,6 +68,7 @@ function initTyping() {
         wpmTag.innerText = wpm;
         mistakeTag.innerText = mistakes;
         cpmTag.innerText = charIndex - mistakes;
+        
     } else {
         clearInterval(timer);
         if (timeLeft == 0) {
@@ -80,11 +83,15 @@ const popupModal = document.getElementById("popup-modal");
 const tryAgainPopupBtn = document.querySelector(".try-again-btn");
 
 function showPopupModal() {
+    let correctChars = charIndex - mistakeTag.innerText;;
+    let accuracy = Math.round((correctChars / charIndex) * 100);
     popupModal.style.display = "block";
     tryAgainPopupBtn.addEventListener("click", resetGame);
     wpmTagPopup.innerText = wpmTag.innerText;
     mistakePopup.innerText = mistakeTag.innerText;
     cpmTagPopup.innerText = charIndex - mistakes;
+    accuracyTagPopup.innerText = accuracy;
+
 }
 
 
