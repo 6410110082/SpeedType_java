@@ -292,6 +292,8 @@ li:not(:first-child) span{
   border: 1px solid #888;
   width: 50%;
   text-align: center;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+  border-radius: 10px;
 }
 #try-again-btn {
   margin-top: 10px;

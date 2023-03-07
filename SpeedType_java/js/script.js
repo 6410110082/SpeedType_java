@@ -8,7 +8,7 @@ wpmTag = document.querySelector(".wpm span"),
 cpmTag = document.querySelector(".cpm span");
 
 let timer,
-maxTime = 60,
+maxTime = 10,
 timeLeft = maxTime,
 charIndex = mistakes = isTyping = 0;
 
@@ -63,13 +63,20 @@ function initTyping() {
         cpmTag.innerText = charIndex - mistakes;
     } else {
         clearInterval(timer);
-        inpField.value = "";
+        if (timeLeft == 0) {
+            showPopupModal();
+        } else {
+            inpField.value = "";
+            showPopupModal();
+        }
     }   
 }
 const popupModal = document.getElementById("popup-modal");
+const tryAgainPopupBtn = document.querySelector(".try-again-btn");
+
 function showPopupModal() {
     popupModal.style.display = "block";
-    tryAgainBtn.addEventListener("click", resetGame);
+    tryAgainPopupBtn.addEventListener("click", resetGame);
 
 }
 
@@ -83,9 +90,11 @@ function initTimer() {
         
         const progress = (timeLeft / maxTime) * 100;
         timerBar.style.width = `${progress}%`;
-    } else {
+    } 
+    else {
         clearInterval(timer);
         showPopupModal();
+        
     }
 }
 
