@@ -14,7 +14,7 @@ accuracyTagPopup = document.querySelector('#popup-modal .acc span');
 
 
 let timer,
-maxTime = 1,
+maxTime = 60,
 timeLeft = maxTime,
 charIndex = mistakes = isTyping = 0;
 
